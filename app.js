@@ -1,0 +1,27 @@
+const express = require ('express')
+const mongoose=require('mongoose')
+const dotenv=require("dotenv")
+const app=express()
+const categoriesRouter = require("./routes/categories.route")
+const scategorieRouter =require("./routes/scategories.route")
+const articleRouter =require("./routes/article.route")
+const chatbotRouter=require("./routes/chatbot.route")
+app.use(express.json())
+dotenv.config()
+app.get('/',(req,res)=>{
+    res.send("bienvenue dans notre site")
+})
+
+mongoose.connect(process.env.DATABASE)
+.then(()=>{console.log("connexion a la base de donné réussie")})
+.catch((error)=>{console.log("impossible de se connecter à la base de données",error)
+process.exit()
+})
+app.use("/api/categories",categoriesRouter)
+app.use("/api/scategories",scategorieRouter)
+app.use("/api/article",articleRouter)
+app.use("/api/chat",chatbotRouter)
+app.listen(process.env.PORT,function(){
+    console.log(`serveur is listen on port ${process.env.PORT}`)
+})
+module.exports = app;
