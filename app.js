@@ -12,7 +12,7 @@ app.get('/',(req,res)=>{
     res.send("bienvenue dans notre site")
 })
 
-mongoose.connect(process.env.DATABASE)
+mongoose.connect(process.env.DATABASECLOUD)
 .then(()=>{console.log("connexion a la base de donné réussie")})
 .catch((error)=>{console.log("impossible de se connecter à la base de données",error)
 process.exit()
