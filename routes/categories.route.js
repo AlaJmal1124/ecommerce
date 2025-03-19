@@ -1,6 +1,7 @@
 var express= require('express');
 var router = express.Router();
 const Categorie =require('../Modele/categories');
+const { verifyToken } = require('../Middleware/verify-token');
 
 
 router.get('/',async(req,res)=>{
@@ -12,7 +13,7 @@ router.get('/',async(req,res)=>{
         res.status(404).json({ message: error.message });
         }}
 );
-router.post('/',async(req,res)=>{
+router.post('/', verifyToken, async(req,res)=>{
     const { nomcategorie, imagecategorie } = req.body;
     const newCategorie = new Categorie({nomcategorie:nomcategorie, imagecategorie:imagecategorie})
         try {
