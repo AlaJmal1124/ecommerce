@@ -11,12 +11,12 @@ router.post('/', async (req, res) => {
     price_data: {
     currency: "usd",
     product_data: {
-    name: item.designation,
-    images:[item.imageart]
+    name: item.title,
+    images:[item.image]
     },
-    unit_amount: item.prix * 100,
+    unit_amount: item.price * 100,
     },
-    quantity: item.cartQuantity,
+    quantity: item.quantity,
     })),
     success_url: `${process.env.CLIENT_URL}`,
     cancel_url: `${process.env.CLIENT_URL}`,

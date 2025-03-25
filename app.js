@@ -14,9 +14,9 @@ const paymentRouter =require("./routes/payment.route.js");
 app.use(express.json())
 app.use(cors())
 dotenv.config()
-app.get('/',(req,res)=>{
-    res.send("bienvenue dans notre site")
-})
+//app.get('/',(req,res)=>{
+    //res.send("bienvenue dans notre site")
+//})
 
 mongoose.connect(process.env.DATABASECLOUD)
 .then(()=>{console.log("connexion a la base de donné réussie")})
